@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\code\app\src\main\assets"/><source path="D:\code\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\code\app\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\YandexDisk\Projects\code\app\src\main\assets"/><source path="D:\YandexDisk\Projects\code\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\YandexDisk\Projects\code\app\src\debug\assets"/></dataSet></merger>

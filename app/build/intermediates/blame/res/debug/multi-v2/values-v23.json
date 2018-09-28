@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\code\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "D:\\YandexDisk\\Projects\\code\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-28.0.0-rc02.aar\\1db1fffe7817da77ae7d1370d5468186\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\Vov\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-28.0.0-rc02.aar\\acd950bf0fc9d0da4efe49c677120754\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\cf05d87339ac1ff5f271462ed54a2fa7\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\Vov\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\ad3325becc10d71792aeeb3320748a0e\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
