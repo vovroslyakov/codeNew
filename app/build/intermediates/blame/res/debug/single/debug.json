@@ -1092,6 +1092,10 @@
         "source": "C:\\Users\\Vov\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\ad3325becc10d71792aeeb3320748a0e\\res\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
+        "merged": "D:\\YandexDisk\\Projects\\code\\app\\build\\intermediates\\res\\merged\\debug\\drawable_welcom.jpg.flat",
+        "source": "D:\\YandexDisk\\Projects\\code\\app\\src\\main\\res\\drawable\\welcom.jpg"
+    },
+    {
         "merged": "D:\\YandexDisk\\Projects\\code\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\Vov\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\ad3325becc10d71792aeeb3320748a0e\\res\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },

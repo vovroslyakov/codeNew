@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="com.example.user.nastya_danchenko_shop.App"
         android:allowBackup="true"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
         android:debuggable="true"
@@ -19,8 +20,10 @@
         android:roundIcon="@drawable/my_icon"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name="com.example.user.nastya_danchenko_shop.MainActivity" >
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        <activity
+            android:name="com.example.user.nastya_danchenko_shop.MainActivity"
+            android:configChanges="orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +33,7 @@
         <activity android:name="com.example.user.nastya_danchenko_shop.AboutActivity" />
         <activity android:name="com.example.user.nastya_danchenko_shop.ProductsActivity" />
         <activity android:name="com.example.user.nastya_danchenko_shop.CategoriesActivity" />
+        <activity android:name="com.example.user.nastya_danchenko_shop.ProductDetailsActivity" />
 
         <provider
             android:name="com.squareup.picasso.PicassoProvider"

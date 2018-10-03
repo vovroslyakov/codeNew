@@ -3,6 +3,7 @@ package com.example.user.nastya_danchenko_shop
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,20 +11,25 @@ import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.experimental.*
 import kotlinx.coroutines.experimental.android.Main
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JSON
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
+import org.jetbrains.anko.custom.customView
 import org.jetbrains.anko.recyclerview.v7.recyclerView
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.kodein.di.direct
+import org.kodein.di.generic.instance
 
 class ProductsActivity : AppCompatActivity() {
+
+    //val requestMaker: RequestMaker by di.instance() или так
+    val requestMaker: RequestMaker = di.direct.instance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,24 +43,33 @@ class ProductsActivity : AppCompatActivity() {
                 }
             }
 
-            val request = Request.Builder()
-                    .url("https://api.myjson.com/bins/nikho")
-                    .build()
+            val categoriesJson = intent.getStringExtra("categories")
+            val categories: Categories = JSON.parse(categoriesJson)
 
-            val client = OkHttpClient()
-
-            val response = async(Dispatchers.IO) {
-                client.newCall(request)
-                        .execute()
+            val json = async(Dispatchers.IO) {
+                requestMaker.make(categories.url)
             }.await()
-
-            val json = response.body()!!.string()
-
             val vegetables: ProductsList = JSON.parse(json)
 
-            recyclerView {
-                layoutManager = LinearLayoutManager(this@ProductsActivity)
-                adapter = ProductsAdapter(products = vegetables.products, context = this@ProductsActivity)
+            verticalLayout {
+
+                customView<HeaderView> {
+                    titleView.text = categories.name
+                }.lparams {
+                }
+
+                recyclerView {
+                    layoutManager = LinearLayoutManager(this@ProductsActivity)
+                    adapter = ProductsAdapter(products = vegetables.products, context = this@ProductsActivity)
+                }.lparams {
+                }
+
+                customView<FooterView> {
+                    imgMenu.text = "Меню"
+                    imgProfile.text = "Профиль"
+                    imgBox.text = "Корзина"
+                }.lparams {
+                }
             }
         }
     }
@@ -96,79 +111,15 @@ class ProductsAdapter(
         holder.view.valutaView.text = product.valuta
         holder.view.quantityView.text = product.quantity
         holder.view.descriptionView.text = product.description
-        Picasso.get().load(product.imageUrl).into(holder.view.pictureView)
-    }
-}
 
-class ProductView(context: Context) : FrameLayout(context) {
-    lateinit var titleView: TextView // lateinit означает, что переменной
-    lateinit var priceView: TextView // не нужно задавать начальное значение
-    lateinit var valutaView: TextView
-    lateinit var quantityView: TextView
-    lateinit var descriptionView: TextView
-    lateinit var pictureView: ImageView
-
-    init {
-        layoutParams = LayoutParams(matchParent, wrapContent)
-
-
-        verticalLayout {
-
-            cardView {
-                radius = 50.0f
-                elevation = 10.0f
-                setCardBackgroundColor(Color.LTGRAY)
-
-                verticalLayout {
-
-                    pictureView = imageView {
-                    }.lparams {
-                        gravity = Gravity.CENTER
-                        topMargin = dip(25)
-                    }
-
-                    titleView = textView {
-                    }.lparams {
-                        leftMargin = dip(35)
-                        topMargin = dip(8)
-                        bottomMargin = dip(4)
-                    }
-                    descriptionView = textView {
-                    }.lparams {
-                        leftMargin = dip(35)
-                        topMargin = dip(4)
-                        bottomMargin = dip(4)
-                    }
-
-                    linearLayout {
-                        priceView = textView {
-                        }.lparams {
-                            weight = 1f
-                        }
-                        valutaView = textView {
-                        }.lparams {
-                            weight = 5f
-                        }
-                        quantityView = textView {
-                        }
-                    }.lparams {
-                        width = matchParent
-                        height = wrapContent
-                        leftMargin = dip(35)
-                        rightMargin = dip(35)
-                        topMargin = dip(4)
-                        bottomMargin = dip(8)
-                    }
-                }
-            }.lparams {
-                topMargin = dip(10)
-                leftMargin = dip(10)
-                rightMargin = dip(10)
-                bottomMargin = dip(20)
-                width = matchParent
-                height = wrapContent
-            }
+        holder.view.onClick {
+            val json = JSON.stringify(product)
+            context.startActivity<ProductDetailsActivity>(
+            "product" to json
+            )
         }
+
+        Picasso.get().load(product.imageUrl).into(holder.view.pictureView)
     }
 }
 

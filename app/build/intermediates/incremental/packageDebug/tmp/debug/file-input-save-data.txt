@@ -1,7 +1,11 @@
 #Internal package file, do not edit.
-#Sat Sep 29 01:18:47 YEKT 2018
+#Wed Oct 03 01:55:17 YEKT 2018
+1.base=D\:\\YandexDisk\\Projects\\code\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 0.baseType=DIRECTORY
-0.base=D\:\\YandexDisk\\Projects\\code\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-0.path=classes.dex
-0.set=DEX
-count=1
+1.baseType=DIRECTORY
+count=2
+1.set=DEX
+0.path=intro_inline.otf
+0.set=ASSET
+0.base=D\:\\YandexDisk\\Projects\\code\\app\\build\\intermediates\\assets\\debug
+1.path=classes.dex
