@@ -13,6 +13,8 @@ import org.jetbrains.anko.custom.customView
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class MainActivityUI : AnkoComponent<MainActivity> {
+
+
     override fun createView(ui: AnkoContext<MainActivity>): View = with(ui) {
 
         frameLayout {
@@ -92,9 +94,10 @@ class MainActivityUI : AnkoComponent<MainActivity> {
 
                 }
 
-
-
             }
         }
+
+
+
     }
 }

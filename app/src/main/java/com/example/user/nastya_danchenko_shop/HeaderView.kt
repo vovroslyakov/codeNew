@@ -20,5 +20,7 @@ class HeaderView(context: Context) : FrameLayout(context) {
             padding = dip(15)
         }
     }
+
+
 }
 

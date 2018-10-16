@@ -1,4 +1,5 @@
 package com.example.user.nastya_danchenko_shop
+
 //
 //import android.graphics.Color
 //import android.support.v7.app.AppCompatActivity
@@ -51,24 +52,16 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.contentFrameLayout
 
-class AboutActivity : AppCompatActivity() {
+class AboutActivity : AnkoComponent<MainActivity>, AppCompatActivity() {
+    override fun createView(ui: AnkoContext<MainActivity>): View = with(ui) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         frameLayout {
             verticalLayout {
-                imageView {
-                    setImageResource(R.drawable.image)
-                }.lparams {
-                    width = dip(100)
-                    height = dip(100)
-                    gravity = Gravity.CENTER_HORIZONTAL
-                    weight = 2f
-                    topMargin = dip(20)
-                }
+
                 textView {
                     text = "Хороший магазин"
                     textSize = 19f

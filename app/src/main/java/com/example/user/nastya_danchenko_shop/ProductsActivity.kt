@@ -1,24 +1,18 @@
 package com.example.user.nastya_danchenko_shop
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.experimental.*
 import kotlinx.coroutines.experimental.android.Main
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JSON
 import org.jetbrains.anko.*
-import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.custom.customView
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -43,25 +37,53 @@ class ProductsActivity : AppCompatActivity() {
                 }
             }
 
+
             val categoriesJson = intent.getStringExtra("categories")
             val categories: Categories = JSON.parse(categoriesJson)
 
             val json = async(Dispatchers.IO) {
                 requestMaker.make(categories.url)
             }.await()
+
+
             val vegetables: ProductsList = JSON.parse(json)
 
-            verticalLayout {
+
+            val json2 = async(Dispatchers.IO) {
+                requestMaker.make("https://api.myjson.com/bins/1evftc")
+            }.await()
+
+
+            val categoriesList: CategoriesList = JSON.parse(json2)
+
+
+
+            relativeLayout {
 
                 customView<HeaderView> {
                     titleView.text = categories.name
                 }.lparams {
                 }
 
-                recyclerView {
-                    layoutManager = LinearLayoutManager(this@ProductsActivity)
-                    adapter = ProductsAdapter(products = vegetables.products, context = this@ProductsActivity)
-                }.lparams {
+                verticalLayout {
+                    recyclerView {
+                        layoutManager = LinearLayoutManager(this@ProductsActivity, LinearLayoutManager.HORIZONTAL, false)
+                        adapter = CategoriesAdapter(categories = categoriesList.categories, context = this@ProductsActivity)
+                    }
+                            .lparams {
+                                verticalMargin = dip(40)
+                                width = matchParent
+                                height = dip(200)
+                            }
+                }
+
+                frameLayout {
+                    recyclerView {
+                        layoutManager = LinearLayoutManager(this@ProductsActivity)
+                        adapter = ProductsAdapter(products = vegetables.products, context = this@ProductsActivity)
+                    }.lparams {
+                        topMargin = dip(150)
+                    }
                 }
 
                 customView<FooterView> {
@@ -77,6 +99,7 @@ class ProductsActivity : AppCompatActivity() {
 
 @Serializable
 class Product(
+        val id: Int,
         val title: String,
         val price: Double,
         val valuta: String,
@@ -115,7 +138,7 @@ class ProductsAdapter(
         holder.view.onClick {
             val json = JSON.stringify(product)
             context.startActivity<ProductDetailsActivity>(
-            "product" to json
+                    "product" to json
             )
         }
 

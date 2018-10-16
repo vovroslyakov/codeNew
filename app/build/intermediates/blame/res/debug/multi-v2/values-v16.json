@@ -4,7 +4,7 @@
             "outputFile": "D:\\YandexDisk\\Projects\\code\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Vov\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0-rc01.aar\\16a0fbfe2ea510f16ae68b894fcaed16\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Vov\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0-rc01.aar\\863b767706c13a171dbc9859ffb0f74a\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Vov\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\ad3325becc10d71792aeeb3320748a0e\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Vov\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\2a705376ca95d2d44d7bbb26dbabcdb7\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

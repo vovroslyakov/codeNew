@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">nastya-danchenko-shop</string>
+    <string name="app_name">Sushi House</string>
+    <string name="button_menu">К меню</string>
 </resources>
